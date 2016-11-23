@@ -10,7 +10,7 @@
     <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
     <script src="https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.standalone.js"></script>
     <script src="map-script.js"></script>
-    <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    <!-- <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" /> -->
     <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
     <style>
       html, body, #map {
@@ -20,10 +20,7 @@
         margin: 0;
       }
       .custom-control {
-        padding: 10px;
-        background-color: #fff;
-        color: #666;
-        font-family: 'Helvetica Neue', Helvetica, Arial, Roboto, sans-serif;
+        padding: 1em;
         text-transform: uppercase;
       }
       #custom-location-detection-button {
@@ -57,15 +54,86 @@
         width: auto;
         text-align: left;
       }
+      div.cartodb-legend-stack {
+        position: absolute;
+        bottom: 35px;
+        right: 20px;
+        border-radius: 4px;
+        border: 1px solid #999;
+        background: #fff;
+        z-index: 105;
+        cursor: text;
+        text-transform: uppercase;
+        font-weight: 700;
+        padding: 1em 1.5em;
+      }
       div.cartodb-legend .legend-title {
         max-width: 12em;
+        line-height: 1.25;
+      }
+      div.cartodb-legend ul {
+        padding: 0;
+        margin: 0.5em 0 0;
+        list-style: none;
+      }
+      div.cartodb-legend.category ul li {
+        display: flex;
+        align-items: center;
       }
       div.cartodb-legend.category ul li .bullet {
-        border-radius: 0;
         width: 1em;
+        height: 1em;
+        margin: 0 0.5em 0 0;
+      }
+      div.cartodb-infowindow {
+        position: absolute;
+        z-index: 1000;
+      }
+      div.cartodb-popup {
+        position: relative;
+        padding: 0;
+        margin: 0 0 14px;
+        box-shadow: 0 0 0 4px rgba(0,0,0,.15);
+        border-radius: 2px;
+        background: #fff;
+      }
+      div.cartodb-popup.v2:before {
+        content: '';
+        position: absolute;
+        bottom: -14px;
+        left: 0;
+        width: 0;
+        height: 0;
+        margin-left: 28px;
+        border-left: 0 solid transparent;
+        border-right: 14px solid transparent;
+        border-top: 14px solid #fff;
+        z-index: 2;
+      }
+      div.cartodb-popup a.cartodb-popup-close-button {
+        position: absolute;
+        top: -9px;
+        right: -9px;
+        width: 1.5em;
+        height: 1.5em;
+        background: #fff;
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 18px;
+        /* border-radius: 18px; */
+        box-shadow: 0 0 0 3px rgba(0,0,0,.15);
+        text-align: center;
+        font-weight: 700;
+        font-size: 1rem;
+      }
+      div.cartodb-popup-content-wrapper {
+        padding: 1em;
       }
       div.cartodb-popup h4 {
         color: #999;
+        margin: 0;
+        text-transform: uppercase;
+        word-wrap: break-word;
+        font-size: 12px;
       }
       .custom-popup-header {
         height: 130px;

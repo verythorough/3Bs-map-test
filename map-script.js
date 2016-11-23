@@ -146,9 +146,13 @@ function addControls(map) {
   map.addControl(new CustomSublayerSelector());
   map.addControl(L.mapbox.geocoderControl('mapbox.places', { position: 'topleft', autocomplete: true }));
   // Show the location detection button only if the user agent supports geolocation
-  if (navigator.geolocation) { map.addControl(new CustomLocationDetectionButton()); }
+  if (navigator.geolocation && location.protocol == 'https:') { 
+    map.addControl(new CustomLocationDetectionButton()); 
+  }
   // Show the new tab button only if the map is embedded in another page.
-  if (window.location !== window.parent.location) { map.addControl(new CustomNewTabViewButton()); }
+  if (window.location !== window.parent.location) { 
+    map.addControl(new CustomNewTabViewButton()); 
+  }
 
   // Zoom to user location, if location is in county bounding box
   map.on('locationfound', function gotoLocationIfInBounds(e) {
